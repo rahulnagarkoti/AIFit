@@ -1,0 +1,19 @@
+﻿.panel {
+    background-color: white;
+}
+
+.panel-body {
+    border: solid;
+    border-color: lightgrey;
+    height: 85vh;
+    padding:20px;
+    /*background-image:url("../images/panelBackground.PNG")*/
+}
+
+.navbar {
+    background-color: darkseagreen;
+}
+body {
+    background-image: url("../images/HealthyBackground.jpg");
+}
+
