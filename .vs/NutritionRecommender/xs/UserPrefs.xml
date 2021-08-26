@@ -1,6 +1,9 @@
 ﻿<Properties StartupConfiguration="{D5CF8D44-380B-4643-BB49-CED5D59BC836}|Default">
   <MonoDevelop.Ide.ItemProperties.NutritionRecommender PreferredExecutionTarget="/Applications/Google Chrome.app" />
-  <MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workbench ActiveDocument="Views/Home/Index.cshtml">
+    <Files>
+      <File FileName="Views/Home/Index.cshtml" Line="5" Column="5" />
+    </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
