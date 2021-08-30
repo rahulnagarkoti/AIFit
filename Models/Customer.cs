@@ -25,5 +25,11 @@ namespace NutritionRecommender.Models
 
         [Required]
         public int Weight { get; set; }
+
+        public string TargetBodyType { get; set; }
+
+        public Workout SuggestWorkout { get; set; }
+
+        public Diet SuggestDiet { get; set; }
     }
 }
