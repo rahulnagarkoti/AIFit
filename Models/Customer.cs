@@ -1,4 +1,5 @@
-﻿using Microsoft.Build.Tasks;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.Build.Tasks;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -10,8 +11,6 @@ namespace NutritionRecommender.Models
 {
     public class Customer
     {
-        [Key]
-        public int Id { get; set; }
         
         [Required]
         [Column(TypeName= "varchar(50)")]
@@ -27,9 +26,5 @@ namespace NutritionRecommender.Models
         public int Weight { get; set; }
 
         public string TargetBodyType { get; set; }
-
-        public Workout SuggestWorkout { get; set; }
-
-        public Diet SuggestDiet { get; set; }
     }
 }

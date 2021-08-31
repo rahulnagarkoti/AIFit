@@ -6,15 +6,10 @@ namespace NutritionRecommender.Models
 {
     public class Workout
     {
-        public Workout()
-        {
-        }
-
         [Key]
-        public int WorkoutId { get; set; }
-
-        public List<Exercise> ExerciseList { get; set; }
-
+        public int Id { get; set; }
+        [Key]
         public int Rating { get; set; }
+        public IEnumerable<Exercise> ExerciseList { get; set; }
     }
 }
