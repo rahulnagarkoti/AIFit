@@ -8,7 +8,6 @@ namespace NutritionRecommender.Models
     {
         [Key]
         public int Id { get; set; }
-        [Key]
         public int Rating { get; set; }
         public IEnumerable<Exercise> ExerciseList { get; set; }
     }
