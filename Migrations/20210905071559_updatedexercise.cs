@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace NutritionRecommender.Migrations
 {
-    public partial class initialmigration : Migration
+    public partial class updatedexercise : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -224,7 +224,7 @@ namespace NutritionRecommender.Migrations
                         .Annotation("Sqlite:Autoincrement", true),
                     ExerciseName = table.Column<string>(type: "varchar(50)", nullable: false),
                     EnergyBurnt = table.Column<float>(nullable: false),
-                    WorkoutId = table.Column<int>(nullable: false)
+                    WorkoutId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -234,7 +234,7 @@ namespace NutritionRecommender.Migrations
                         column: x => x.WorkoutId,
                         principalTable: "Workout",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(

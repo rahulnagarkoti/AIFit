@@ -252,7 +252,7 @@ namespace NutritionRecommender.Migrations
                         .IsRequired()
                         .HasColumnType("varchar(50)");
 
-                    b.Property<int>("WorkoutId")
+                    b.Property<int?>("WorkoutId")
                         .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
@@ -397,9 +397,7 @@ namespace NutritionRecommender.Migrations
                 {
                     b.HasOne("NutritionRecommender.Models.Workout", "Workout")
                         .WithMany("ExerciseList")
-                        .HasForeignKey("WorkoutId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("WorkoutId");
                 });
 
             modelBuilder.Entity("NutritionRecommender.Models.Food", b =>

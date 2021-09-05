@@ -1,32 +1,62 @@
 ﻿<!DOCTYPE html>
 
 <style>
-   
 </style>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - AIFit</title>
-    <link rel="icon" type="image/png" sizes="512x512" href="~/images/favicon/favicon-512.png">
-    <link rel="icon" type="image/png" sizes="192x192" href="~/images/favicon/favicon-300.png">
-    <link rel="apple-touch-icon-precomposed" type="image/png" sizes="144x144" href="~/images/favicon/favicon-180.png">
-    <link rel="shortcut icon" href="~/images/favicon/favicon-96.png">
-    <link rel="shortcut icon" href="~/images/favicon/favicon-32.png">
-    <link rel="shortcut icon" href="~/images/favicon/favicon-16.png">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <title>@ViewData["Title"] - NutriApp</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    @*<link rel="stylesheet" href="~/css/site.css" />*@
-    <link rel="stylesheet" href="~/css/main.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link href="~/css/customCSS.css" rel="stylesheet" />
 </head>
 
 
 <body>
-    @RenderBody()
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm  border-bottom box-shadow mb-3">
+            <div class="container">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">NutritionRecommender</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                    <partial name="_LoginPartial" />
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container body-content">
+        <br />
+        <div class="panel panel-default">
+            <div class="panel-heading"></div>
+            <div class="panel-body panel-height ">
+                <div id="main-body">
+                    @RenderBody()
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2021 - NutritionRecommender - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
 
 
-    <script src="https://kit.fontawesome.com/26d4a64054.js" crossorigin="anonymous"></script>
+
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
