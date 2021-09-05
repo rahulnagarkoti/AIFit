@@ -9,8 +9,8 @@ using NutritionRecommender.Data;
 namespace NutritionRecommender.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20210905071559_updatedexercise")]
-    partial class updatedexercise
+    [Migration("20210905073331_updatedtables")]
+    partial class updatedtables
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -336,10 +336,15 @@ namespace NutritionRecommender.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
+                    b.Property<int?>("CustomerId")
+                        .HasColumnType("INTEGER");
+
                     b.Property<int>("Rating")
                         .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("CustomerId");
 
                     b.ToTable("Workout");
                 });
@@ -428,6 +433,13 @@ namespace NutritionRecommender.Migrations
                         .HasForeignKey("WorkoutId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("NutritionRecommender.Models.Workout", b =>
+                {
+                    b.HasOne("NutritionRecommender.Models.Customer", "Customer")
+                        .WithMany()
+                        .HasForeignKey("CustomerId");
                 });
 #pragma warning restore 612, 618
         }

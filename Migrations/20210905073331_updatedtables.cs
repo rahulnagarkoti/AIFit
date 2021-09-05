@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace NutritionRecommender.Migrations
 {
-    public partial class updatedexercise : Migration
+    public partial class updatedtables : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -74,19 +74,6 @@ namespace NutritionRecommender.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Meal", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Workout",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    Rating = table.Column<int>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Workout", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -193,6 +180,26 @@ namespace NutritionRecommender.Migrations
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Workout",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Rating = table.Column<int>(nullable: false),
+                    CustomerId = table.Column<int>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Workout", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Workout_Customer_CustomerId",
+                        column: x => x.CustomerId,
+                        principalTable: "Customer",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -332,6 +339,11 @@ namespace NutritionRecommender.Migrations
                 name: "IX_Recommendations_WorkoutId",
                 table: "Recommendations",
                 column: "WorkoutId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Workout_CustomerId",
+                table: "Workout",
+                column: "CustomerId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -367,13 +379,13 @@ namespace NutritionRecommender.Migrations
                 name: "AspNetUsers");
 
             migrationBuilder.DropTable(
-                name: "Customer");
-
-            migrationBuilder.DropTable(
                 name: "Meal");
 
             migrationBuilder.DropTable(
                 name: "Workout");
+
+            migrationBuilder.DropTable(
+                name: "Customer");
         }
     }
 }

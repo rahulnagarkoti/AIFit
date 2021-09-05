@@ -334,10 +334,15 @@ namespace NutritionRecommender.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
+                    b.Property<int?>("CustomerId")
+                        .HasColumnType("INTEGER");
+
                     b.Property<int>("Rating")
                         .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("CustomerId");
 
                     b.ToTable("Workout");
                 });
@@ -426,6 +431,13 @@ namespace NutritionRecommender.Migrations
                         .HasForeignKey("WorkoutId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("NutritionRecommender.Models.Workout", b =>
+                {
+                    b.HasOne("NutritionRecommender.Models.Customer", "Customer")
+                        .WithMany()
+                        .HasForeignKey("CustomerId");
                 });
 #pragma warning restore 612, 618
         }
