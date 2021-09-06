@@ -1,0 +1,81 @@
+﻿.bg-image{
+position: relative;
+overflow: hidden;
+background-repeat: no-repeat;
+background-size: cover;
+background-position: 60% 100%;
+}
+
+.card {
+    height: 75vh;
+    width: 32vw;
+    position: fixed;
+    left: 15%;
+    top: 10%;
+}
+
+.login_image {
+    background: url(../images/background/Yoga.jpg);
+    background-position: center;
+    background-size: cover;
+}
+.image-div {
+    width: 100%;
+    height: auto;
+}
+
+.nav-item {
+    width:50%;
+    text-align:center;
+}
+.d-block {
+    display:block;
+}
+
+
+.login-window {
+    width: 100%;
+}
+
+.bt-radius {
+    border-top-right-radius: 5px !important
+}
+
+.btn-blue {
+    color: #fff;
+    border-color: #1b6ec2;
+    background-color: #1b6ec2;
+}
+
+    .btn-blue:hover {
+        color: #fff;
+        background-color: #0d6efd;
+        border-color: #0d6efd
+    }
+
+.btn-block {
+    width: 100%;
+    display: block;
+}
+
+.nav-pills {
+    display: table !important;
+    width: 100%
+}
+
+    .nav-pills .nav-link {
+        border-radius: 0px;
+        border-bottom: 1px solid #0d6efd40
+    }
+
+.nav-item {
+    display: table-cell;
+    background: #0d6efd2e
+}
+
+
+.form input {
+    margin-bottom: 12px;
+    border-radius: 3px
+}
+

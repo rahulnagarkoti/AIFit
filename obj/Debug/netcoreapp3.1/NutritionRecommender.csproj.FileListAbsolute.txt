@@ -1582,6 +1582,7 @@ C:\Users\nagar\source\repos\NutriApp\bin\Debug\netcoreapp3.1\runtimes\win-x86\na
 C:\Users\nagar\source\repos\NutriApp\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.0\System.Runtime.Caching.dll
 C:\Users\nagar\source\repos\NutriApp\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Runtime.Caching.dll
 C:\Users\nagar\source\repos\NutriApp\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
+C:\Users\nagar\source\repos\NutriApp\obj\Debug\netcoreapp3.1\NutritionRecommender.csproj.AssemblyReference.cache
 C:\Users\nagar\source\repos\NutriApp\obj\Debug\netcoreapp3.1\NutritionRecommender.AssemblyInfoInputs.cache
 C:\Users\nagar\source\repos\NutriApp\obj\Debug\netcoreapp3.1\NutritionRecommender.AssemblyInfo.cs
 C:\Users\nagar\source\repos\NutriApp\obj\Debug\netcoreapp3.1\NutritionRecommender.csproj.CoreCompileInputs.cache
@@ -1611,4 +1612,4 @@ C:\Users\nagar\source\repos\NutriApp\obj\Debug\netcoreapp3.1\NutritionRecommende
 C:\Users\nagar\source\repos\NutriApp\obj\Debug\netcoreapp3.1\NutritionRecommender.dll
 C:\Users\nagar\source\repos\NutriApp\obj\Debug\netcoreapp3.1\NutritionRecommender.pdb
 C:\Users\nagar\source\repos\NutriApp\obj\Debug\netcoreapp3.1\NutritionRecommender.genruntimeconfig.cache
-C:\Users\nagar\source\repos\NutriApp\obj\Debug\netcoreapp3.1\NutritionRecommender.csproj.AssemblyReference.cache
+C:\Users\nagar\source\repos\NutriApp\obj\Debug\netcoreapp3.1\Razor\Views\Home\HomePage.cshtml.g.cs
