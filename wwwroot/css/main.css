@@ -415,6 +415,11 @@ input[type="number"] {
         color: white;
     }
 
+.label {
+    color: #838691;
+    font-size: 14px;
+}
+
 .form-control {
     width: 360px;
     height: 30px;
@@ -430,10 +435,6 @@ input[type="number"] {
     position: relative;
 }
 
-    .form-control:focus-within .form-control__label {
-        color: #838691;
-    }
-
     .form-control:focus-within .form-control__input {
         background-color: #838691;
     }
@@ -445,14 +446,8 @@ input[type="number"] {
 .form-control__label {
     position: absolute;
     left: 0;
-    color: #c4c4c4;
-    font-size: 14px;
     -webkit-transition: color 0.3s ease;
     transition: color 0.3s ease;
-}
-
-.form-control__input:valid ~ .form-control__label {
-    color: #838691;
 }
 
 .form-control__input {
@@ -488,4 +483,74 @@ input[type="number"] {
 
 .form-control--invalid .form-control__error-message {
     top: calc(-100% + 5px);
+}
+
+.form-control--radio {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: end;
+    -ms-flex-pack: end;
+    justify-content: end;
+}
+
+.form-control .radio-control__radio:checked + label {
+    color: #838691;
+}
+
+.form-control .radio-control {
+    height: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    z-index: 1;
+    background-color: white;
+}
+
+.form-control .radio-control__radio {
+    width: 15px;
+    height: 15px;
+    border-radius: 7.5px;
+    margin-right: 10px;
+    position: relative;
+    background-color: #c4c4c4;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    -webkit-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+
+    .form-control .radio-control__radio::before {
+        content: '';
+        width: 7px;
+        height: 7px;
+        border-radius: 3.5px;
+        display: none;
+        position: absolute;
+        top: 4px;
+        left: 4px;
+        background-color: white;
+    }
+
+    .form-control .radio-control__radio:checked {
+        background-color: #838691;
+    }
+
+        .form-control .radio-control__radio:checked::before {
+            display: block;
+        }
+
+.form-control .radio-control:first-of-type {
+    margin-right: 40px;
 }
