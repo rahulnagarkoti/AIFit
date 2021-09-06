@@ -13,14 +13,22 @@ namespace NutritionRecommender.Models
     {
         [Key]
         public int Id { get; set; }
+        [Required]
+        [Column(TypeName = "varchar(256)")]
+        public string Email { get; set; }
 
         [Required]
-        [Column(TypeName= "varchar(50)")]
-        public string  Name { get; set; }
-        
+        [Column(TypeName = "varchar(256)")]
+        public string Password { get; set; }
+
+
+        [Required]
+        [Column(TypeName = "varchar(50)")]
+        public string Name { get; set; }
+
         [Required]
         public DateTime DOB { get; set; }
-        
+
         [Required]
         public int Height { get; set; }
 
