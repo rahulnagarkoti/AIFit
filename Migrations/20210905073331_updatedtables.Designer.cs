@@ -9,8 +9,8 @@ using NutritionRecommender.Data;
 namespace NutritionRecommender.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20210831151352_initial-migration")]
-    partial class initialmigration
+    [Migration("20210905073331_updatedtables")]
+    partial class updatedtables
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -254,7 +254,7 @@ namespace NutritionRecommender.Migrations
                         .IsRequired()
                         .HasColumnType("varchar(50)");
 
-                    b.Property<int>("WorkoutId")
+                    b.Property<int?>("WorkoutId")
                         .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
@@ -336,10 +336,15 @@ namespace NutritionRecommender.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
+                    b.Property<int?>("CustomerId")
+                        .HasColumnType("INTEGER");
+
                     b.Property<int>("Rating")
                         .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("CustomerId");
 
                     b.ToTable("Workout");
                 });
@@ -399,9 +404,7 @@ namespace NutritionRecommender.Migrations
                 {
                     b.HasOne("NutritionRecommender.Models.Workout", "Workout")
                         .WithMany("ExerciseList")
-                        .HasForeignKey("WorkoutId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("WorkoutId");
                 });
 
             modelBuilder.Entity("NutritionRecommender.Models.Food", b =>
@@ -430,6 +433,13 @@ namespace NutritionRecommender.Migrations
                         .HasForeignKey("WorkoutId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("NutritionRecommender.Models.Workout", b =>
+                {
+                    b.HasOne("NutritionRecommender.Models.Customer", "Customer")
+                        .WithMany()
+                        .HasForeignKey("CustomerId");
                 });
 #pragma warning restore 612, 618
         }

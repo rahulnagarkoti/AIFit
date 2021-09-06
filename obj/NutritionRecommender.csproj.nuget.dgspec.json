@@ -1,25 +1,27 @@
 {
   "format": 1,
   "restore": {
-    "/Volumes/D/GitHub/NutriApp/NutritionRecommender.csproj": {}
+    "C:\\Users\\nagar\\source\\repos\\NutriApp\\NutritionRecommender.csproj": {}
   },
   "projects": {
-    "/Volumes/D/GitHub/NutriApp/NutritionRecommender.csproj": {
+    "C:\\Users\\nagar\\source\\repos\\NutriApp\\NutritionRecommender.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Volumes/D/GitHub/NutriApp/NutritionRecommender.csproj",
+        "projectUniqueName": "C:\\Users\\nagar\\source\\repos\\NutriApp\\NutritionRecommender.csproj",
         "projectName": "NutritionRecommender",
-        "projectPath": "/Volumes/D/GitHub/NutriApp/NutritionRecommender.csproj",
-        "packagesPath": "/Users/slick/.nuget/packages/",
-        "outputPath": "/Volumes/D/GitHub/NutriApp/obj/",
+        "projectPath": "C:\\Users\\nagar\\source\\repos\\NutriApp\\NutritionRecommender.csproj",
+        "packagesPath": "C:\\Users\\nagar\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\nagar\\source\\repos\\NutriApp\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/slick/.config/NuGet/NuGet.Config"
+          "C:\\Users\\nagar\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -93,7 +95,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/5.0.400/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.303\\RuntimeIdentifierGraph.json"
         }
       }
     }
