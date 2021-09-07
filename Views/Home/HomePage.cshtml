@@ -1,4 +1,29 @@
 ﻿<div class="d-flex justify-content-center align-items-center mt-5">
-    <div class="card">
-    </div>        
+    <form action="">
+        <div class="form-control form-control--radio">
+            <div class="radio-control">
+                <input type="radio" value="m" name="gender" id="male" class="radio-control__radio" required>
+                <label for="male" class="radio-control__label label">Male</label>
+            </div>
+            <div class="radio-control">
+                <input type="radio" name="gender" id="female" class="radio-control__radio" required>
+                <label for="female" value="f" class="radio-control__label label">Female</label>
+            </div>
+
+            <label class="form-control__label label">Gender</label>
+        </div>
+        <div class="form-control">
+            <input type="number" name="weight" id="weight" class="form-control__input" required>
+            <label for="weight" class="form-control__label label">Weight (kg)</label>
+        </div>
+        <div class="form-control">
+            <input type="number" name="height" id="height" class="form-control__input" required>
+            <label for="height" class="form-control__label label">Height (cm)</label>
+        </div>
+        <div class="form-control">
+            <input type="number" name="bodyType" id="body-type" class="form-control__input" required>
+            <label for="body-type" class="form-control__label label">Body Type</label>
+        </div>
+    </form>
+
 </div>
