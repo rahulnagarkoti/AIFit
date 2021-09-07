@@ -1,6 +1,7 @@
 using AIFit.Controllers;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI;
@@ -41,7 +42,7 @@ namespace NutritionRecommender
             services.AddControllersWithViews();
             services.AddRazorPages();
             services.AddControllersWithViews().AddRazorRuntimeCompilation();
-            //services.AddTransient<IWebHostEnvironment>();
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
 
         }

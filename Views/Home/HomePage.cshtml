@@ -31,3 +31,10 @@
     </form>
 
 </div>
+<script>
+    $(function () {
+        GlobalFunc.ShowLogout();
+        $(document).find("#logout").on("click", function () { GlobalFunc.LogOut(); })
+    });
+
+</script>

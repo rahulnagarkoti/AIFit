@@ -1,7 +1,23 @@
-﻿<!DOCTYPE html>
+﻿
+
+<!DOCTYPE html>
 
 <style>
 </style>
+<environment names="Development">
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"></script>
+    <script src="~/js/GlobalFunctions.js"></script>
+</environment>
+<environment names="Staging,Production">
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"></script>
+    <script src="~/js/GlobalFunctions.js"></script>
+</environment>
+@RenderSection("Scripts", required: false)
+
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -21,7 +37,7 @@
 
 
 <body class="bg-image" style="background-image: url('../images/background/bg-1.jpg'); height: 100vh;">
-    @*<header>
+    <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm  border-bottom box-shadow mb-3">
             <div class="container">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">AIFit</a>
@@ -29,24 +45,11 @@
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                <button id="logout" type="submit" style="display: none;" class="btn btn-primary ">Logout</button>
 
-                    <li class="nav-item">
-                            <button type="submit" class="nav-link btn btn-link text-dark">Logout</button>
-                    </li>
-                    <partial name="_LoginPartial" />
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="HomePage">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                    </ul>
-                </div>
             </div>
         </nav>
-    </header>*@
+    </header>
 
     <div class="container">
         <div id="main-body">
@@ -56,15 +59,5 @@
 
 
 
-
-
-
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"></script>
-    <script src="~/js/GlobalFunctions.js"></script>
-
-    @RenderSection("Scripts", required: false)
 </body>
 </html>

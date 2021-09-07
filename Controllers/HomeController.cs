@@ -30,15 +30,19 @@ namespace NutritionRecommender.Controllers
 
         public IActionResult Index()
         {
+            return View();
+        }
+        public IActionResult Login() 
+        {
             //check if user is logged in -> if yes, direct to Home Page
             var userId = GetCurrentUserId();
-            if (userId != 0) 
+            if (userId != 0)
             {
                 //user is logged in
-                return View("HomePage");
+                return HomePage();
             }
 
-            return View();
+            return PartialView();
         }
 
         [HttpPost]
@@ -152,7 +156,7 @@ namespace NutritionRecommender.Controllers
             else
                 return Int32.Parse(userId);
 
-        }
+        }    
 
     }
 }
