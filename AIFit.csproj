@@ -17,6 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNet.WebPages" Version="3.2.7" />
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="3.1.18" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.18" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="3.1.18" />
@@ -34,5 +35,9 @@
 
   <ItemGroup>
     <None Remove="Microsoft.CodeAnalysis.VersionCheckAnalyzer" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Areas\" />
   </ItemGroup>
 </Project>

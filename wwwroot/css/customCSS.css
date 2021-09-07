@@ -7,7 +7,7 @@
 }
 
 .card {
-    height: 75vh;
+    min-height: 75vh;
     width: 32vw;
     position: fixed;
     left: 15%;
@@ -54,7 +54,8 @@
     }
 
 .btn-block {
-    width: 100%;
+    /*margin-left:25%;*/
+    /*width: 50%;*/
     display: block;
 }
 
@@ -63,10 +64,10 @@
     width: 100%
 }
 
-    .nav-pills .nav-link {
-        border-radius: 0px;
-        border-bottom: 1px solid #0d6efd40
-    }
+.nav-pills .nav-link {
+    border-radius: 0px;
+    border-bottom: 1px solid #0d6efd40
+}
 
 .nav-item {
     display: table-cell;
@@ -81,6 +82,10 @@
 
 .error {
     color:red;
+}
+
+.errorMessage {
+    padding:4px;
 }
 
 .logo {

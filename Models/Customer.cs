@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using AIFit.Models.Enum;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.Build.Tasks;
 using System;
 using System.Collections.Generic;
@@ -17,6 +18,8 @@ namespace NutritionRecommender.Models
         [Column(TypeName = "varchar(256)")]
         public string Email { get; set; }
 
+        public GenderType Gender { get; set; }
+
         [Required]
         [Column(TypeName = "varchar(256)")]
         public string Password { get; set; }
@@ -29,11 +32,9 @@ namespace NutritionRecommender.Models
         [Required]
         public DateTime DOB { get; set; }
 
-        [Required]
-        public int Height { get; set; }
+        public int? Height { get; set; }
 
-        [Required]
-        public int Weight { get; set; }
+        public int? Weight { get; set; }
 
         public string TargetBodyType { get; set; }
     }

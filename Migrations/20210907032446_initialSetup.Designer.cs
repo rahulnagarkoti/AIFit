@@ -6,11 +6,11 @@ using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using NutritionRecommender.Data;
 
-namespace NutritionRecommender.Migrations
+namespace AIFit.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20210905073331_updatedtables")]
-    partial class updatedtables
+    [Migration("20210907032446_initialSetup")]
+    partial class initialSetup
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -157,12 +157,10 @@ namespace NutritionRecommender.Migrations
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
                     b.Property<string>("LoginProvider")
-                        .HasColumnType("TEXT")
-                        .HasMaxLength(128);
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("ProviderKey")
-                        .HasColumnType("TEXT")
-                        .HasMaxLength(128);
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("ProviderDisplayName")
                         .HasColumnType("TEXT");
@@ -199,12 +197,10 @@ namespace NutritionRecommender.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("LoginProvider")
-                        .HasColumnType("TEXT")
-                        .HasMaxLength(128);
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("Name")
-                        .HasColumnType("TEXT")
-                        .HasMaxLength(128);
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("Value")
                         .HasColumnType("TEXT");
@@ -223,17 +219,28 @@ namespace NutritionRecommender.Migrations
                     b.Property<DateTime>("DOB")
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("Height")
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("varchar(256)");
+
+                    b.Property<int>("Gender")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int?>("Height")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("varchar(50)");
 
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasColumnType("varchar(256)");
+
                     b.Property<string>("TargetBodyType")
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("Weight")
+                    b.Property<int?>("Weight")
                         .HasColumnType("INTEGER");
 
                     b.HasKey("Id");

@@ -1,3 +1,4 @@
+using AIFit.Controllers;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -32,9 +33,11 @@ namespace NutritionRecommender
             string dbUrl ="Data Source =" + _env.WebRootPath +"\\"+ Configuration.GetConnectionString("DefaultConnection");
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlite(dbUrl));
-                    
-            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-                .AddEntityFrameworkStores<ApplicationDbContext>();
+
+            services.AddSession(options => {
+                options.IdleTimeout = TimeSpan.FromMinutes(2000);//You can set Time   
+            });
+
             services.AddControllersWithViews();
             services.AddRazorPages();
             services.AddControllersWithViews().AddRazorRuntimeCompilation();
@@ -59,6 +62,7 @@ namespace NutritionRecommender
             }
             app.UseHttpsRedirection();
             app.UseStaticFiles();
+            app.UseSession();
 
             app.UseRouting();
 
