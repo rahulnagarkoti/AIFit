@@ -134,6 +134,12 @@ namespace NutritionRecommender.Controllers
         }
         public IActionResult HomePage()
         {
+            var userId = GetCurrentUserId();
+
+            if (userId == 0) 
+            {
+                return PartialView("Login");
+            }
             return PartialView();
         }
 

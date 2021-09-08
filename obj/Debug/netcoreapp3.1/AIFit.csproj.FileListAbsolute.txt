@@ -418,3 +418,4 @@ C:\Users\nagar\source\repos\NutriApp\obj\Debug\netcoreapp3.1\AIFit.dll
 C:\Users\nagar\source\repos\NutriApp\obj\Debug\netcoreapp3.1\AIFit.pdb
 C:\Users\nagar\source\repos\NutriApp\obj\Debug\netcoreapp3.1\AIFit.genruntimeconfig.cache
 C:\Users\nagar\source\repos\NutriApp\obj\Debug\netcoreapp3.1\Razor\Views\Home\Login.cshtml.g.cs
+C:\Users\nagar\source\repos\NutriApp\obj\Debug\netcoreapp3.1\Razor\Views\Home\Suggestions.cshtml.g.cs

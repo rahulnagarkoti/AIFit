@@ -6,6 +6,10 @@
     background-position: 60% 100%;
 }
 
+.window {
+    border-radius: 20px;
+}
+
 .card {
     min-height: 75vh;
     width: 32vw;
@@ -19,17 +23,23 @@
     background-position: center;
     background-size: cover;
 }
+
 .image-div {
     width: 100%;
     height: auto;
 }
 
-.nav-item {
-    width:50%;
-    text-align:center;
+input {
+    border-radius: 15px
 }
+
+.nav-item {
+    width: 50%;
+    text-align: center;
+}
+
 .d-block {
-    display:block;
+    display: block;
 }
 
 
@@ -64,10 +74,10 @@
     width: 100%
 }
 
-.nav-pills .nav-link {
-    border-radius: 0px;
-    border-bottom: 1px solid #0d6efd40
-}
+    .nav-pills .nav-link {
+        border-radius: 0px;
+        border-bottom: 1px solid #0d6efd40
+    }
 
 .nav-item {
     display: table-cell;
@@ -81,18 +91,17 @@
 }
 
 .error {
-    color:red;
+    color: red;
 }
 
 .errorMessage {
-    padding:4px;
+    padding: 4px;
 }
 
 .logo {
-    margin-left:auto;
-    margin-right:auto;
+    margin-left: auto;
+    margin-right: auto;
     display: block;
     border-radius: 50%;
     width: 100px;
 }
-

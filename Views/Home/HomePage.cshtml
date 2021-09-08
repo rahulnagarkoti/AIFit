@@ -2,34 +2,64 @@
 @{
     ViewData["Title"] = "Home Page";
 }
-﻿<div class="d-flex justify-content-center align-items-center mt-5">
-    <form action="">
-        <div class="form-control form-control--radio">
-            <div class="radio-control">
-                <input type="radio" value="m" name="gender" id="male" class="radio-control__radio" required>
-                <label for="male" class="radio-control__label label">Male</label>
-            </div>
-            <div class="radio-control">
-                <input type="radio" name="gender" id="female" class="radio-control__radio" required>
-                <label for="female" value="f" class="radio-control__label label">Female</label>
-            </div>
+<style>
+    .panel-body {
+        background-color: white;
+        height: 100%;
+        width: 75%;
+    }
+</style>
+<div class="panel panel-default">
+    <div class="panel-body window">
+        <div class="row">
+            <div class="col-md-5">
+                <div class="row">
 
-            <label class="form-control__label label">Gender</label>
-        </div>
-        <div class="form-control">
-            <input type="number" name="weight" id="weight" class="form-control__input" required>
-            <label for="weight" class="form-control__label label">Weight (kg)</label>
-        </div>
-        <div class="form-control">
-            <input type="number" name="height" id="height" class="form-control__input" required>
-            <label for="height" class="form-control__label label">Height (cm)</label>
-        </div>
-        <div class="form-control">
-            <input type="number" name="bodyType" id="body-type" class="form-control__input" required>
-            <label for="body-type" class="form-control__label label">Body Type</label>
-        </div>
-    </form>
+                    <div class="col-md-1"></div>
 
+                    <div class="form-group  col-md-4">
+                        <label>Your Height</label>
+                        <input class="form-control" id="height" type="number" />
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-1"></div>
+
+                    <div class="form-group  col-md-4">
+                        <label>Your Weight</label>
+                        <input class="form-control" id="weight" type="number" />
+                    </div>
+                </div>
+
+                <div class="row">
+
+                    <div class="col-md-1"></div>
+                    <div class="form-group  col-md-6">
+                        <label>Desired Body Type</label>
+                        <select class="form-select" id="bodyType">
+                            <option value="0">Gain Weight</option>
+                            <option value="1">Keep Fit</option>
+                            <option value="2">Loose Weight</option>
+
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+
+                    <div class="col-md-1"></div>
+                    <div class="form-group  col-md-5">
+                        <button class="btn btn-primary">Get Exercises</button>
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="col-md-7">
+                <div class="card-body  window" style="background-color:lavender;margin:4px 4px 4px 4px;height:80%"></div>
+            </div>
+        </div>
+    </div>
 </div>
 <script>
     $(function () {
