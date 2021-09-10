@@ -1,0 +1,54 @@
+﻿@{
+    ViewData["Title"] = "Alternative Suggestion";
+}
+
+
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">Exercise</th>
+            <th scope="col">Total Time</th>
+            <th scope="col">Total Burn</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in ViewBag.Exercises)
+        {
+            <tr>
+                <td>@item.ExerciseName</td>
+                <td>@item.TotalTime</td>
+                <td>@item.TotalBurn</td>
+            </tr>
+
+
+        }
+
+    </tbody>
+</table>
+
+
+<a href="#" id="saveSuggestions">
+    <div class="alert alert-success" role="alert">
+        Go ahead with the workout! Click here
+    </div>
+</a>
+
+<script>
+    $(function () {
+        $("#alternativeSuggestion").on("click", function () {
+            //validaitons
+            $.ajax(
+                {
+                    url: "/Suggestion/GetSuggestions",
+                    type: "GET",
+                    success: function (response) {
+                        debugger;
+                        //populate the data in the table
+                        $("#suggestionWindow").html(response);
+
+                    }
+                });
+
+        });
+    });
+</script>

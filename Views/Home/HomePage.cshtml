@@ -8,56 +8,64 @@
         height: 100%;
         width: 75%;
     }
+
+    .suggestionWindow {
+        background-color: lavender;
+        margin: 4px 4px 4px 4px;
+        height: 95%
+    }
 </style>
 <div class="panel panel-default">
     <div class="panel-body window">
-        <div class="row">
-            <div class="col-md-5">
-                <div class="row">
+        <form id="details" class="px-4 pt-4">
+            <div class="row">
+                <div class="col-md-5">
+                    <div class="row">
 
-                    <div class="col-md-1"></div>
+                        <div class="col-md-1"></div>
 
-                    <div class="form-group  col-md-4">
-                        <label>Your Height</label>
-                        <input class="form-control" id="height" type="number" />
+                        <div class="form-group  col-md-5">
+                            <label>Your Height</label>
+                            <input class="form-control" name="height" id="height" placeholder="in cm" type="number" />
+                        </div>
                     </div>
-                </div>
 
-                <div class="row">
-                    <div class="col-md-1"></div>
+                    <div class="row">
+                        <div class="col-md-1"></div>
 
-                    <div class="form-group  col-md-4">
-                        <label>Your Weight</label>
-                        <input class="form-control" id="weight" type="number" />
+                        <div class="form-group  col-md-5">
+                            <label>Your Weight</label>
+                            <input class="form-control" name="weight" id="weight" placeholder="in kg" type="number" />
+                        </div>
                     </div>
-                </div>
 
-                <div class="row">
+                    <div class="row">
 
-                    <div class="col-md-1"></div>
-                    <div class="form-group  col-md-6">
-                        <label>Desired Body Type</label>
-                        <select class="form-select" id="bodyType">
-                            <option value="0">Gain Weight</option>
-                            <option value="1">Keep Fit</option>
-                            <option value="2">Loose Weight</option>
+                        <div class="col-md-1"></div>
+                        <div class="form-group  col-md-6">
+                            <label>Desired Body Type</label>
+                            <select class="form-select" name="bodyType" id="bodyType">
+                                <option value="0">Gain Weight</option>
+                                <option value="1">Keep Fit</option>
+                                <option value="2">Loose Weight</option>
 
-                        </select>
+                            </select>
+                        </div>
                     </div>
-                </div>
-                <div class="row">
+                    <div class="row">
 
-                    <div class="col-md-1"></div>
-                    <div class="form-group  col-md-5">
-                        <button class="btn btn-primary">Get Exercises</button>
+                        <div class="col-md-1"></div>
+                        <div class="form-group  col-md-5">
+                            <button class="btn btn-primary" id="getExercise">Get Exercises</button>
+                        </div>
                     </div>
+
+
                 </div>
+        </form>
 
-
-            </div>
-            <div class="col-md-7">
-                <div class="card-body  window" style="background-color:lavender;margin:4px 4px 4px 4px;height:80%"></div>
-            </div>
+        <div class="col-md-7">
+            <div id="suggestionWindow" class="card-body  window suggestionWindow"></div>
         </div>
     </div>
 </div>
@@ -65,6 +73,44 @@
     $(function () {
         GlobalFunc.ShowLogout();
         $(document).find("#logout").on("click", function () { GlobalFunc.LogOut(); })
+
+        $("#getExercise").on("click", function () {
+
+            height = $("#height").val();
+            weight = $("#weight").val();
+            bodyType = $("#bodyType option:selected").val();
+            $("form#details").validate({
+                errorPlacement: function (error, element) { error.insertBefore(element) },
+                rules: {
+                    height: {
+                        required: true,
+                    },
+                    weight: {
+                        required: true,
+                    }
+                },
+                // Specify validation error messages
+                messages: {
+                    height: "Invalid input!",
+                    weight: "Invalid input!",
+                },
+                submitHandler: function (form) {
+                    $.ajax(
+                        {
+                            url: "/Suggestion/GetSuggestions",
+                            type: "POST",
+                            data: { height: height, weight: weight, bodyType: bodyType },
+                            success: function (response) {
+                                debugger;
+                                //populate the data in the table
+                                $("#suggestionWindow").html(response);
+
+                            }
+                        });
+                }
+            });
+
+        });
     });
 
 </script>

@@ -105,3 +105,15 @@ input {
     border-radius: 50%;
     width: 100px;
 }
+
+a{
+    text-decoration:none
+
+}
+.nav-image {
+    height: auto;
+    width: auto;
+    max-height: 40px;
+    max-width: 240px;
+    border-radius: 50%
+}
