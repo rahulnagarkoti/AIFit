@@ -10,7 +10,19 @@
     border-radius: 20px;
 }
 
-.card {
+.panel-body {
+    background-color: white;
+    height: 100%;
+    width: 75%;
+}
+
+.suggestionWindow {
+    background-color: lavender;
+    margin: 4px 4px 4px 4px;
+    height: 95%
+}
+
+.customCard {
     min-height: 75vh;
     width: 35vw;
     position: fixed;
@@ -189,7 +201,6 @@ input:hover input ~ .checkmark {
     width: 100px;
 }
 
-<<<<<<< HEAD
 a{
     text-decoration:none
 
@@ -200,9 +211,8 @@ a{
     max-height: 40px;
     max-width: 240px;
     border-radius: 50%
-=======
+}
 .tab-content {
     background-color: white;
     border-radius: 5px;
->>>>>>> jonathan
 }

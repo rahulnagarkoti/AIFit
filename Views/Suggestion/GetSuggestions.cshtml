@@ -1,6 +1,9 @@
 ﻿@{
     ViewData["Title"] = "Suggestions";
+    decimal totalDuration = 0;
+    decimal totalCalories = 0;
 }
+  
 
 
 <table class="table">
@@ -14,6 +17,9 @@
     <tbody>
         @foreach (var item in ViewBag.Exercises)
         {
+           
+                totalDuration +=  item.TotalTime;
+                totalCalories += item.TotalBurn;
             <tr>
                 <td>@item.ExerciseName</td>
                 <td>@item.TotalTime</td>
@@ -22,40 +28,24 @@
 
 
         }
+        <tr>
+            <td><b>Total</b></td>
+            <td><b>@totalDuration Minutes</b></td>
+            <td><b>@totalCalories Calories</b></td>
+        </tr>
 
     </tbody>
 </table>
 
+<a href="#" id="alternativeSuggestion">See Other Workouts</a>
+<button class="btn btn-primary" id="saveSuggestions">Accept</button>
 
-
-<a href="#" id="alternativeSuggestion">
-    <div class="alert alert-warning" role="alert">
-        Not Happy? Get alternative sugestions? Click here
-    </div>
-</a>
-
-<a href="#" id="saveSuggestions">
-    <div class="alert alert-success" role="alert">
-        Go ahead with the workout! Click here
-    </div>
-</a>
 
 <script>
     $(function () {
         $("#alternativeSuggestion").on("click", function () {
-            //validaitons
-            $.ajax(
-                {
-                    url: "/Suggestion/GetAlternativeSuggestions",
-                    type: "GET",
-                    success: function (response) {
-                        debugger;
-                        //populate the data in the table
-                        $("#suggestionWindow").html(response);
-
-                    }
-                });
-
+            //validations
+            GlobalFunc.GetPage("/Suggestion/GetAlternativeSuggestions", "#main-body");
         });
     });
 </script>
