@@ -9,24 +9,10 @@
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="AiFit" expanded="True">
-            <Node name="AiFit" expanded="True">
+            <Node name="AIFit" expanded="True">
               <Node name="Views" expanded="True">
                 <Node name="Home" expanded="True">
                   <Node name="Login.cshtml" selected="True" />
-                </Node>
-                <Node name="Shared" expanded="True" />
-              </Node>
-              <Node name="AIFit" expanded="True">
-                <Node name="css" expanded="True" />
-                <Node name="wwwroot" expanded="True">
-                  <Node name="lib" expanded="True">
-                    <Node name="bootstrap" expanded="True">
-                      <Node name="dist" expanded="True">
-                        <Node name="css" expanded="True" />
-                        <Node name="js" expanded="True" />
-                      </Node>
-                    </Node>
-                  </Node>
                 </Node>
               </Node>
             </Node>
