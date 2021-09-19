@@ -67,6 +67,21 @@ namespace AIFit.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Exercise",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    ExerciseName = table.Column<string>(type: "varchar(50)", nullable: false),
+                    EnergyBurnt = table.Column<float>(nullable: false),
+                    Duration = table.Column<float>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Exercise", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Meal",
                 columns: table => new
                 {
@@ -77,6 +92,19 @@ namespace AIFit.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Meal", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Workout",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Rating = table.Column<int>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Workout", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -186,26 +214,6 @@ namespace AIFit.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Workout",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    Rating = table.Column<int>(nullable: false),
-                    CustomerId = table.Column<int>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Workout", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Workout_Customer_CustomerId",
-                        column: x => x.CustomerId,
-                        principalTable: "Customer",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Food",
                 columns: table => new
                 {
@@ -222,27 +230,6 @@ namespace AIFit.Migrations
                         name: "FK_Food_Meal_MealId",
                         column: x => x.MealId,
                         principalTable: "Meal",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Exercise",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    ExerciseName = table.Column<string>(type: "varchar(50)", nullable: false),
-                    EnergyBurnt = table.Column<float>(nullable: false),
-                    WorkoutId = table.Column<int>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Exercise", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Exercise_Workout_WorkoutId",
-                        column: x => x.WorkoutId,
-                        principalTable: "Workout",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
@@ -312,11 +299,6 @@ namespace AIFit.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_Exercise_WorkoutId",
-                table: "Exercise",
-                column: "WorkoutId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Food_MealId",
                 table: "Food",
                 column: "MealId");
@@ -330,11 +312,6 @@ namespace AIFit.Migrations
                 name: "IX_Recommendations_WorkoutId",
                 table: "Recommendations",
                 column: "WorkoutId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Workout_CustomerId",
-                table: "Workout",
-                column: "CustomerId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -373,10 +350,10 @@ namespace AIFit.Migrations
                 name: "Meal");
 
             migrationBuilder.DropTable(
-                name: "Workout");
+                name: "Customer");
 
             migrationBuilder.DropTable(
-                name: "Customer");
+                name: "Workout");
         }
     }
 }

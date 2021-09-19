@@ -16,5 +16,8 @@ namespace NutritionRecommender.Models
         [Required]
         public float EnergyBurnt { get; set; }
 
+        [Required]
+        public float Duration { get; set; }
+
     }
 }

@@ -252,6 +252,9 @@ namespace AIFit.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
+                    b.Property<float>("Duration")
+                        .HasColumnType("REAL");
+
                     b.Property<float>("EnergyBurnt")
                         .HasColumnType("REAL");
 
@@ -259,12 +262,7 @@ namespace AIFit.Migrations
                         .IsRequired()
                         .HasColumnType("varchar(50)");
 
-                    b.Property<int?>("WorkoutId")
-                        .HasColumnType("INTEGER");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("WorkoutId");
 
                     b.ToTable("Exercise");
                 });
@@ -336,15 +334,10 @@ namespace AIFit.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<int?>("CustomerId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("Rating")
+                    b.Property<int?>("Rating")
                         .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("CustomerId");
 
                     b.ToTable("Workout");
                 });
@@ -400,13 +393,6 @@ namespace AIFit.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("NutritionRecommender.Models.Exercise", b =>
-                {
-                    b.HasOne("NutritionRecommender.Models.Workout", null)
-                        .WithMany("ExerciseList")
-                        .HasForeignKey("WorkoutId");
-                });
-
             modelBuilder.Entity("NutritionRecommender.Models.Food", b =>
                 {
                     b.HasOne("NutritionRecommender.Models.Meal", null)
@@ -427,13 +413,6 @@ namespace AIFit.Migrations
                         .HasForeignKey("WorkoutId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("NutritionRecommender.Models.Workout", b =>
-                {
-                    b.HasOne("NutritionRecommender.Models.Customer", "Customer")
-                        .WithMany()
-                        .HasForeignKey("CustomerId");
                 });
 #pragma warning restore 612, 618
         }

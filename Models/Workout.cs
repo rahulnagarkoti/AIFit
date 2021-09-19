@@ -9,12 +9,6 @@ namespace NutritionRecommender.Models
     {
         [Key]
         public int Id { get; set; }
-        public int Rating { get; set; }
-        public int? CustomerId { get; set; }
-
-        [ForeignKey("CustomerId")]
-        public Customer Customer { get; set; }
-
-        public IEnumerable<Exercise> ExerciseList { get; set; }
+        public int? Rating { get; set; }
     }
 }
