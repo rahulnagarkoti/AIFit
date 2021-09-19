@@ -16,9 +16,5 @@ namespace NutritionRecommender.Models
         [Required]
         public float EnergyBurnt { get; set; }
 
-        public int? WorkoutId { get; set; }
-
-        [ForeignKey("WorkoutId")]
-        public Workout Workout { get; set; }
     }
 }

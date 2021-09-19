@@ -14,8 +14,8 @@ namespace NutritionRecommender.Models
 
         [Required]
         public int CustomerId { get; set; }
-        [Required]
-        public int MealId { get; set; }
+        //[Required]
+        //public int MealId { get; set; }
         [Required]
         public int WorkoutId { get; set; }
         public DateTime Date { get; set; }
@@ -23,8 +23,8 @@ namespace NutritionRecommender.Models
         [ForeignKey("CustomerId")]
         public Customer Customer { get; set; }
 
-        [ForeignKey("MealId")]
-        public Meal Meal { get; set; }
+        //[ForeignKey("MealId")]
+        //public Meal Meal { get; set; }
 
         [ForeignKey("WorkoutId")]
         public Workout Workout { get; set; }

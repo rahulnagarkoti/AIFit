@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace AIFit.Migrations
 {
-    public partial class initialSetup : Migration
+    public partial class initialmigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -254,7 +254,6 @@ namespace AIFit.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     CustomerId = table.Column<int>(nullable: false),
-                    MealId = table.Column<int>(nullable: false),
                     WorkoutId = table.Column<int>(nullable: false),
                     Date = table.Column<DateTime>(nullable: false)
                 },
@@ -265,12 +264,6 @@ namespace AIFit.Migrations
                         name: "FK_Recommendations_Customer_CustomerId",
                         column: x => x.CustomerId,
                         principalTable: "Customer",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Recommendations_Meal_MealId",
-                        column: x => x.MealId,
-                        principalTable: "Meal",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
@@ -332,11 +325,6 @@ namespace AIFit.Migrations
                 name: "IX_Recommendations_CustomerId",
                 table: "Recommendations",
                 column: "CustomerId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Recommendations_MealId",
-                table: "Recommendations",
-                column: "MealId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Recommendations_WorkoutId",

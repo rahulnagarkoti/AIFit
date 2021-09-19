@@ -9,8 +9,8 @@ using NutritionRecommender.Data;
 namespace AIFit.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20210907032446_initialSetup")]
-    partial class initialSetup
+    [Migration("20210919043745_initial-migration")]
+    partial class initialmigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -320,17 +320,12 @@ namespace AIFit.Migrations
                     b.Property<DateTime>("Date")
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("MealId")
-                        .HasColumnType("INTEGER");
-
                     b.Property<int>("WorkoutId")
                         .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
 
                     b.HasIndex("CustomerId");
-
-                    b.HasIndex("MealId");
 
                     b.HasIndex("WorkoutId");
 
@@ -409,7 +404,7 @@ namespace AIFit.Migrations
 
             modelBuilder.Entity("NutritionRecommender.Models.Exercise", b =>
                 {
-                    b.HasOne("NutritionRecommender.Models.Workout", "Workout")
+                    b.HasOne("NutritionRecommender.Models.Workout", null)
                         .WithMany("ExerciseList")
                         .HasForeignKey("WorkoutId");
                 });
@@ -426,12 +421,6 @@ namespace AIFit.Migrations
                     b.HasOne("NutritionRecommender.Models.Customer", "Customer")
                         .WithMany()
                         .HasForeignKey("CustomerId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("NutritionRecommender.Models.Meal", "Meal")
-                        .WithMany()
-                        .HasForeignKey("MealId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
