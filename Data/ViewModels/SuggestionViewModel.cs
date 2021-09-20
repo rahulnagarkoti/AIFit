@@ -7,9 +7,10 @@ namespace AIFit.Data.ViewModels
 {
     public class SuggestionViewModel
     {
+        public int WorkoutId { get; set; }
         public string ExerciseName { get; set; }
-        public decimal TotalTime { get; set; }
-        public decimal TotalBurn { get; set; }
+        public float TotalTime { get; set; }
+        public float TotalBurn { get; set; }
 
     }
 }

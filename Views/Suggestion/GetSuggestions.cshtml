@@ -1,9 +1,9 @@
 ﻿@{
     ViewData["Title"] = "Suggestions";
-    decimal totalDuration = 0;
-    decimal totalCalories = 0;
+    float totalDuration = 0;
+    float totalCalories = 0;
+    int workoutId=0;
 }
-  
 
 
 <table class="table">
@@ -17,9 +17,9 @@
     <tbody>
         @foreach (var item in ViewBag.Exercises)
         {
-           
-                totalDuration +=  item.TotalTime;
-                totalCalories += item.TotalBurn;
+            workoutId = item.WorkoutId;
+            totalDuration += item.TotalTime;
+            totalCalories += item.TotalBurn;
             <tr>
                 <td>@item.ExerciseName</td>
                 <td>@item.TotalTime</td>
@@ -33,6 +33,7 @@
             <td><b>@totalDuration Minutes</b></td>
             <td><b>@totalCalories Calories</b></td>
         </tr>
+        <input type="hidden" id="workoutId" value="@workoutId" class="hidden" />
 
     </tbody>
 </table>
@@ -44,8 +45,30 @@
 <script>
     $(function () {
         $("#alternativeSuggestion").on("click", function () {
-            //validations
-            GlobalFunc.GetPage("/Suggestion/GetAlternativeSuggestions", "#main-body");
+            workoutId = $("#workoutId").val();
+            $.ajax(
+                {
+                    url: "/Suggestion/GetAlternativeSuggestions",
+                    method: "POST",
+                    data: { workoutId: workoutId },
+                    success: function (res)
+                    {
+                        $("#main-body").html(res);
+                    }
+                })
+        });
+
+        $("#saveSuggestions").on("click", function () {
+            workoutId = $("#workoutId").val();
+            $.ajax(
+                {
+                    url: "/Suggestion/saveSuggestion",
+                    method: "POST",
+                    data: { workoutId: workoutId },
+                    success: function (res) {
+                        $("#main-body").html(res);
+                    }
+                })
         });
     });
 </script>

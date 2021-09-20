@@ -1,8 +1,10 @@
 ﻿using AIFit.Data.ViewModels;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using NutritionRecommender.Data;
+using NutritionRecommender.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,7 +23,7 @@ namespace AIFit.Controllers
         private IConfiguration _config;
         private readonly ApplicationDbContext _context;
         static HttpClient client = new HttpClient();
-        public SuggestionController(IConfiguration config, ApplicationDbContext context) 
+        public SuggestionController(IConfiguration config, ApplicationDbContext context)
         {
             _config = config;
             _context = context;
@@ -30,91 +32,95 @@ namespace AIFit.Controllers
 
         public async Task<IActionResult> GetSuggestions(decimal height, decimal weight, int bodyType)
         {
-            var userId = int.Parse(HttpContext.Session.GetString("userId"));
-            var customer = _context.Customer.Where(x => x.Id == userId).FirstOrDefault();
-            var path = _config.GetConnectionString("APIUrl");
-            var obj = new CustomerData { height = height, weight = weight, bodyType = bodyType, gender = (int)customer.Gender};
-            //var content = new MultipartFormDataContent();
-            //content.Add(new StringContent(weight.ToString()), "weight");
-            //content.Add(new StringContent(bodyType.ToString()), "height");
-            //content.Add(new StringContent(customer.Gender.ToString()), "gender");
-            //content.Add(new StringContent(weight.ToString()), "weight");
-
-            //api call
-            var content = new StringContent(JsonSerializer.Serialize(obj), Encoding.UTF8, "application/json");
-
-            HttpResponseMessage res = await client.PostAsync(path, content);
-            if (res.IsSuccessStatusCode)
+            try
             {
-                var apiResponse = res.Content.ReadAsStringAsync(); //ReadAsAsync<Workout>
-                var temp = Newtonsoft.Json.JsonConvert.DeserializeObject<ApiResponse>(apiResponse.Result);
-                var workout = _context.Workout.Where(x => x.Id == temp.WorkoutId).FirstOrDefault();
+                var userId = int.Parse(HttpContext.Session.GetString("userId"));
+                var customer = _context.Customer.Where(x => x.Id == userId).FirstOrDefault();
+                var path = _config.GetConnectionString("APIUrl");
+                var obj = new CustomerData { height = height, weight = weight, bodyType = bodyType, gender = (int)customer.Gender };
 
-                //do something with the data
+                //api call
+                var content = new StringContent(JsonSerializer.Serialize(obj), Encoding.UTF8, "application/json");
+
+                HttpResponseMessage res = await client.PostAsync(path, content);
+                if (res.IsSuccessStatusCode)
+                {
+                    var apiResponse = res.Content.ReadAsStringAsync(); //ReadAsAsync<Workout>
+                    var temp = Newtonsoft.Json.JsonConvert.DeserializeObject<ApiResponse>(apiResponse.Result);
+                    var workout = _context.Workout.Where(x => x.Id == temp.WorkoutId).FirstOrDefault();
+                    var exerciseList = _context.WorkoutExercise.Where(x => x.WorkoutId == workout.Id).Include(x => x.Exercise)
+                                        .Select(x => new SuggestionViewModel
+                                        {
+                                            WorkoutId = x.WorkoutId,
+                                            ExerciseName = x.Exercise.ExerciseName,
+                                            TotalBurn = x.Exercise.EnergyBurnt,
+                                            TotalTime = x.Exercise.Duration
+                                        }).ToList();
+                    ViewBag.Exercises = exerciseList;
+                }
+                return PartialView("GetSuggestions");
+
+            }
+            catch (Exception e)
+            {
+
+                throw;
             }
 
-            var exercises = new List<SuggestionViewModel>()
-            {
-                new SuggestionViewModel{ ExerciseName = "Jogging", TotalBurn=200, TotalTime=15},
-                new SuggestionViewModel{ ExerciseName = "Swimming", TotalBurn=400, TotalTime=15},
-                new SuggestionViewModel{ ExerciseName = "Jumping", TotalBurn=300, TotalTime=15},
-                new SuggestionViewModel{ ExerciseName = "Cycling", TotalBurn=600, TotalTime=15}
-            };
-            ViewBag.Exercises = exercises;
-            return PartialView("GetSuggestions");
-             
         }
 
-
-        public IActionResult GetAlternativeSuggestions()
+        //return View
+        public void SaveSuggestion(int workoutId)
         {
-            //get alternative suggestions
-           
+            try
+            {
+                var userId = Int32.Parse(HttpContext.Session.GetString("userId"));
+                var model = new Recommendations()
+                {
+                    CustomerId = userId,
+                    Date = DateTime.Now,
+                    WorkoutId = workoutId
 
-            var exercises = new List<SuggestionViewModel>()
+                };
+                _context.Recommendations.Add(model);
+                _context.SaveChanges();
+
+            }
+            catch (Exception e)
+            {
+
+                throw;
+            }
+
+        }
+
+        public IActionResult GetAlternativeSuggestions(int workoutId)
+        {
+            try
+            {
+                var exercises = new List<SuggestionViewModel>()
             {
                 new SuggestionViewModel{ ExerciseName = "Squats", TotalBurn=100, TotalTime=10 },
                 new SuggestionViewModel{ ExerciseName = "Pushups", TotalBurn=375, TotalTime=1 },
                 new SuggestionViewModel{ ExerciseName = "Jumping", TotalBurn=300, TotalTime=15 },
                 new SuggestionViewModel{ ExerciseName = "Sprinting", TotalBurn=600, TotalTime=2 }
             };
-            ViewBag.Exercises = exercises;
-            return PartialView("AlternativeSuggestion");
-
-        }
-
-
-        public async Task<string> ApiCall(object obj)
-        {
-            var path = _config.GetConnectionString("APIUrl");
-
-            /*
-            api call
-            HttpResponseMessage res = await client.GetAsync(path,obj);
-            res.EnsureSuccessStatusCode();
-
-            if (res.IsSuccessStatusCode) 
-            {
-                var data = res.Content.ReadAsStringAsync(); //ReadAsAsync<Workout>
-                do something with the data
+                ViewBag.Exercises = exercises;
+                return PartialView("AlternativeSuggestion");
             }
-            */
-            return "";
+            catch (Exception e)
+            {
+                //log error
+                return PartialView("AlternativeSuggestion");
+            }
+            //get alternative suggestions
+
+
+
+
         }
-    }
 
-    public class CustomerData 
-    {
-        public decimal weight { get; set; }
-        public decimal height { get; set; }
-        public int bodyType { get; set; }
-        public int gender { get; set; }
-    }
 
-    public class ApiResponse 
-    {
-        public int WorkoutId { get; set; }
-        public int StatusCode { get; set; }
+
     }
-  
 }
