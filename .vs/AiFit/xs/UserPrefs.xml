@@ -1,20 +1,23 @@
 ﻿<Properties StartupConfiguration="{D5CF8D44-380B-4643-BB49-CED5D59BC836}|NutritionRecommender">
   <MonoDevelop.Ide.ItemProperties.NutritionRecommender PreferredExecutionTarget="/Applications/Google Chrome.app" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Views/Home/Login.cshtml">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Startup.cs">
     <Files>
-      <File FileName="wwwroot/css/customCSS.css" Line="1" Column="1" />
-      <File FileName="Views/Home/Login.cshtml" Line="1" Column="1" />
+      <File FileName="Controllers/HomeController.cs" Line="144" Column="1" />
+      <File FileName="Startup.cs" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="AiFit" expanded="True">
             <Node name="AIFit" expanded="True">
+              <Node name="Controllers" expanded="True" />
               <Node name="Views" expanded="True">
-                <Node name="Home" expanded="True">
-                  <Node name="Login.cshtml" selected="True" />
-                </Node>
+                <Node name="Home" expanded="True" />
               </Node>
+              <Node name="wwwroot" expanded="True">
+                <Node name="css" expanded="True" />
+              </Node>
+              <Node name="Startup.cs" selected="True" />
             </Node>
           </Node>
         </State>
@@ -27,5 +30,4 @@
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.ItemProperties.AIFit PreferredExecutionTarget="/Applications/Google Chrome.app" />
 </Properties>
