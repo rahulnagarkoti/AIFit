@@ -1,3 +1,15 @@
+
+insert into Workout values (1, null);
+insert into Workout values (2, null);
+insert into Workout values (3, null);
+insert into Workout values (4, null);
+insert into Workout values (5, null);
+insert into Workout values (6, null);
+insert into Workout values (7, null);
+insert into Workout values (8, null);
+insert into Workout values (9, null);
+insert into Workout values (10, null);
+
 insert into WorkoutExercise values (1, 1, 48);
 insert into WorkoutExercise values (2, 1, 63);
 insert into WorkoutExercise values (3, 2, 38);
