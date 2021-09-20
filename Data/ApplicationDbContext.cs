@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using AIFit.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using NutritionRecommender.Models;
 using System;
@@ -19,6 +20,7 @@ namespace NutritionRecommender.Data
         public DbSet<Meal> Meal { get; set; }
         public DbSet<Recommendations> Recommendations { get; set; }
         public DbSet<Workout> Workout { get; set; }
+        public DbSet<WorkoutExercise> WorkoutExercise { get; set; }
 
 
 

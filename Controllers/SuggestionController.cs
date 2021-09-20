@@ -41,16 +41,17 @@ namespace AIFit.Controllers
             //content.Add(new StringContent(weight.ToString()), "weight");
 
             //api call
-            //var content = new StringContent(JsonSerializer.Serialize(obj), Encoding.UTF8, "application/json");
+            var content = new StringContent(JsonSerializer.Serialize(obj), Encoding.UTF8, "application/json");
 
-            //HttpResponseMessage res = await client.PostAsync(path, content);
-            //if (res.IsSuccessStatusCode)
-            //{
-            //    var apiResponse = res.Content.ReadAsStringAsync(); //ReadAsAsync<Workout>
-            //    var temp = Newtonsoft.Json.JsonConvert.DeserializeObject<ApiResponse>(apiResponse.Result);
-            //    var workout=_context.Workout.Where(x => x.Id == temp.WorkoutId).FirstOrDefault();
-            //    //do something with the data
-            //}
+            HttpResponseMessage res = await client.PostAsync(path, content);
+            if (res.IsSuccessStatusCode)
+            {
+                var apiResponse = res.Content.ReadAsStringAsync(); //ReadAsAsync<Workout>
+                var temp = Newtonsoft.Json.JsonConvert.DeserializeObject<ApiResponse>(apiResponse.Result);
+                var workout = _context.Workout.Where(x => x.Id == temp.WorkoutId).FirstOrDefault();
+
+                //do something with the data
+            }
 
             var exercises = new List<SuggestionViewModel>()
             {
