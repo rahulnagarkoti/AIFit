@@ -3,70 +3,6 @@
     ViewData["Title"] = "Home Page";
 }
 
-@*<div class="panel panel-default homepage-panel">
-        <div class="panel-body window homepage-panel-body">
-            <form id="details" class="px-4 pt-4 homepage-form">
-                <div class="row">
-                    <div class="col-md-5">
-                        <div class="row">
-
-                            <div class="col-md-1"></div>
-
-                            <div class="form-group homepage-form-group col-md-5">
-                                <label>Height</label>
-                                <input class="form-control" name="height" id="height" placeholder="in cm" type="number" />
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-1"></div>
-
-                            <div class="form-group homepage-form-group col-md-5">
-                                <label>Weight</label>
-                                <input class="form-control" name="weight" id="weight" placeholder="in kg" type="number" />
-                            </div>
-                        </div>
-
-                        <div class="row">
-
-                            <div class="col-md-1"></div>
-                            <div class="form-group homepage-form-group col-md-6">
-                                <label>Body Goal</label>
-                                <select class="form-select" name="bodyType" id="bodyType">
-                                    <option value="0">Gain Weight</option>
-                                    <option value="1">Keep Fit</option>
-                                    <option value="2">Loose Weight</option>
-
-                                </select>
-                            </div>
-                        </div>
-                        <div class="row">
-
-                            <div class="col-md-1"></div>
-                            <div class="form-group homepage-form-group-submit col-md-5">
-                                <button class="btn btn-primary" id="getExercise">Get Exercises</button>
-                            </div>
-                        </div>
-
-
-                    </div>
-            </form>
-
-
-        </div>
-        <div class="col-md-7 homepage-suggestion">
-            <h1 class="col-md-5 homepage-suggestion-h1">Suggested Workout</h1>
-            <div class="row homepage-suggestion-head">
-                <div class="col">Exercise</div>
-                <div class="col">Duration</div>
-                <div class="col">Burn</div>
-            </div>
-            <div id="suggestionWindow" class="card-body  window suggestionWindow"></div>
-        </div>
-    </div>*@
-
-@* testing *@
-
 <div class="panel panel-default homepage-panel mt-5">
     <div class="panel-body window homepage-panel-body">
         <div class="container">
@@ -75,7 +11,7 @@
                     <form action="" id="details" class="homepage-form">
                         <div class="form-group d-flex justify-content-between align-items-center">
                             <label for="weight">Weight: </label>
-                            <input type="number" name="height" id="height" placeholder="in kg" class="homepage-input rounded" required>
+                            <input type="number" name="weight" id="weight" placeholder="in kg" class="homepage-input rounded" required>
                         </div>
                         <div class="form-group d-flex justify-content-between align-items-center">
                             <label for="height">Height: </label>
@@ -91,7 +27,7 @@
                             <i class="fas fa-chevron-down"></i>
                         </div>
                         <div class="form-group form-group-submit d-flex justify-content-center align-items-center mt-5">
-                            <div class="btn fw-bold">Get Workout</div>
+                            @*<div class="btn fw-bold">*@<button class="btn fw-bold" id="getExercise">Get Workout</button>@*</div>*@
                         </div>
                     </form>
                 </div>
@@ -105,7 +41,7 @@
                         <div class="col fw-bold p-2 d-flex justify-content-center rounded mx-2">Duration</div>
                         <div class="col fw-bold p-2 d-flex justify-content-center rounded">Burn</div>
                     </div>
-                    <div class="row suggestion-table-body rounded">
+                    <div id="updateWindow" class="row suggestion-table-body rounded">
                         <div class="col">
                             <div class="row suggestion-table-col px-3">
                                 <div class="col p-2 d-flex justify-content-center">Run</div>
@@ -125,18 +61,15 @@
                         </div>
                     </div>
                     <div class="row suggestion-table-footer p-2">
-                        <div class="col d-flex justify-content-between align-items-center"><a href="">See Other Workout</a><div class="btn fw-bold">Accept</div></div>
+                        <div class="col d-flex justify-content-between align-items-center"><a href="#" id="alternativeSuggestion">See Other Workout</a><button id="saveSuggestions" class="btn fw-bold">Accept</button></div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
-
-@* end testing*@
-
-
-<script>$(function () {
+<script>
+    $(function () {
         GlobalFunc.ShowLogout();
         $(document).find("#logout").on("click", function () { GlobalFunc.LogOut(); })
 
@@ -167,9 +100,8 @@
                             type: "POST",
                             data: { height: height, weight: weight, bodyType: bodyType },
                             success: function (response) {
-                                debugger;
                                 //populate the data in the table
-                                $("#suggestionWindow").html(response);
+                                $("#updateWindow").html(response);
 
                             }
                         });

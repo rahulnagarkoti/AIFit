@@ -2,45 +2,36 @@
     ViewData["Title"] = "Suggestions";
     float totalDuration = 0;
     float totalCalories = 0;
-    int workoutId=0;
+    int workoutId = 0;
 }
 
 
-<table class="table">
-    <thead class="thead-dark">
-        <tr>
-            <th scope="col">Exercise</th>
-            <th scope="col">Total Time</th>
-            <th scope="col">Total Burn</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in ViewBag.Exercises)
-        {
-            workoutId = item.WorkoutId;
-            totalDuration += item.TotalTime;
-            totalCalories += item.TotalBurn;
-            <tr>
-                <td>@item.ExerciseName</td>
-                <td>@item.TotalTime</td>
-                <td>@item.TotalBurn</td>
-            </tr>
+<div class="col">
+    @foreach (var item in ViewBag.Exercises)
+    {
+        workoutId = item.WorkoutId;
+        totalDuration += item.TotalTime;
+        totalCalories += item.TotalBurn;
+
+        <div class="row suggestion-table-col px-3">
+            <div class="col p-2 d-flex justify-content-center">@item.ExerciseName</div>
+            <div class="col p-2 d-flex justify-content-center">@item.TotalTime</div>
+            <div class="col p-2 d-flex justify-content-center">@item.TotalBurn</div>
+        </div>
+
+    }
+    
+<div class="row suggestion-table-col px-3">
+
+    <div class="col p-2 d-flex justify-content-center"><b>Total</b></div>
+    <div class="col p-2 d-flex justify-content-center"><b>@totalDuration minutes</b></div>
+    <div class="col p-2 d-flex justify-content-center"><b>@totalCalories calories</b></div>
+</div>
+
+</div>
 
 
-        }
-        <tr>
-            <td><b>Total</b></td>
-            <td><b>@totalDuration Minutes</b></td>
-            <td><b>@totalCalories Calories</b></td>
-        </tr>
-        <input type="hidden" id="workoutId" value="@workoutId" class="hidden" />
-
-    </tbody>
-</table>
-
-<a href="#" id="alternativeSuggestion">See Other Workouts</a>
-<button class="btn btn-primary" id="saveSuggestions">Accept</button>
-
+<input type="hidden" id="workoutId" value="@workoutId" class="hidden" />
 
 <script>
     $(function () {
@@ -51,8 +42,7 @@
                     url: "/Suggestion/GetAlternativeSuggestions",
                     method: "POST",
                     data: { workoutId: workoutId },
-                    success: function (res)
-                    {
+                    success: function (res) {
                         $("#main-body").html(res);
                     }
                 })
