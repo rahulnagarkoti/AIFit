@@ -136,11 +136,15 @@ namespace NutritionRecommender.Controllers
         {
             var userId = GetCurrentUserId();
 
-            if (userId == 0) 
+            // uncomment this before commit
+
+            if (userId == 0)
             {
                 return PartialView("Login");
             }
             return PartialView();
+
+            //return View(); //comment before commit
         }
 
         public IActionResult Privacy()

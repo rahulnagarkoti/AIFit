@@ -11,13 +11,13 @@
 }
 
 .panel-body {
-    background-color: white;
+/*    background-color: gray;*/
     height: 100%;
     width: 75%;
 }
 
 .suggestionWindow {
-    background-color: lavender;
+    background-color: white;
     margin: 4px 4px 4px 4px;
     height: 95%
 }
@@ -58,8 +58,12 @@ input {
     border-radius: 15px;
 }
 
+
+
+
+
 /* Create a custom radio button */
-.checkmark {
+/*.checkmark {
     position: absolute;
     top: 0;
     left: 0;
@@ -67,39 +71,39 @@ input {
     width: 25px;
     background-color: #eee;
     border-radius: 50%;
-}
+}*/
 
 /* On mouse-over, add a grey background color */
-input:hover input ~ .checkmark {
+/*input:hover input ~ .checkmark {
     background-color: #ccc;
-}
+}*/
 
 /* When the radio button is checked, add a blue background */
-.container input:checked ~ .checkmark {
+/*.container input:checked ~ .checkmark {
     background-color: #2196F3;
-}
+}*/
 
 /* Create the indicator (the dot/circle - hidden when not checked) */
-.checkmark:after {
+/*.checkmark:after {
     content: "";
     position: absolute;
     display: none;
-}
+}*/
 
 /* Show the indicator (dot/circle) when checked */
-.container input:checked ~ .checkmark:after {
+/*.container input:checked ~ .checkmark:after {
     display: block;
-}
+}*/
 
 /* Style the indicator (dot/circle) */
-.container .checkmark:after {
+/*.container .checkmark:after {
     top: 9px;
     left: 9px;
     width: 8px;
     height: 8px;
     border-radius: 50%;
     background: white;
-}
+}*/
 
 .nav-item {
     width: 50%;
@@ -164,13 +168,13 @@ input:hover input ~ .checkmark {
     margin-bottom: 12px;
     border-radius: 3px;
     background-color: #c4c4c4;
-    color: #ffffff
+    color: #ffffff;
 }
 
     .form input:focus{
         background-color: #838691;
-        color: #ffffff
-    }
+        color: #ffffff;
+        }
 
     .form input::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
         color: white;
@@ -216,3 +220,152 @@ a{
     background-color: white;
     border-radius: 5px;
 }
+
+/* radio button - restyle */
+
+input[type="radio"] {
+-webkit-appearance: none;
+appearance: none;
+
+position: relative;
+top: 5px;
+width: 20px;
+height: 20px;
+background-color: #c4c4c4;
+border-radius: 10px;
+margin-right: 10px;
+}
+
+input[type="radio"]::before {
+content: "";
+position: absolute;
+top: 5px;
+left: 5px;
+width: 10px;
+height: 10px;
+border-radius: 5px;
+background-color: #fff;
+display: none;
+}
+
+input[type="radio"]:checked::before {
+display: block;
+}
+
+.radio-inline {
+display: flex;
+align-items: center;
+}
+
+/* homepage */
+
+.homepage-panel-body {
+/*    background-color: lightgray;*/
+    width: 100%;
+}
+
+
+/* homepage - left */
+
+.form-col {
+background-color: white;
+max-height: 280px;
+}
+
+.homepage-form label {
+margin-bottom: 0;
+}
+
+.form-group-submit .btn {
+    background-color: #6378c2;
+    color: white;
+    padding: 6px 30px;
+}
+
+/*.homepage-form .form-group {
+border: 1px solid red;
+}*/
+
+.homepage-input, .homepage-select {
+    width: 230px;
+    padding: 5px 20px;
+    border-radius: 0;
+    background-color: #c4c4c4;
+    color: white;
+    border: 0;
+    transition: background-color 0.3s ease;
+}
+
+    .homepage-input::placeholder {
+        color: white;
+    }
+
+.homepage-select {
+    position: relative;
+    padding-left: 15px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+.form-group-select {
+position: relative;
+}
+
+    .form-group-select i {
+        position: absolute;
+        top: 10px;
+        right: 20px;
+        color: white;
+        pointer-events: none;
+    }
+
+    .homepage-input:focus, .homepage-select:focus, .homepage-input:valid, .homepage-select:valid {
+        background-color: #838691;
+    }
+
+/* homepage - mid */
+
+.space-col {
+background-color: transparent;
+
+}
+
+/* homepage - right */
+
+.suggestion-col h1 {
+color: white;
+margin: 0;
+}
+
+#suggestionWindow div {
+    color: white;
+}
+
+#suggestionWindow .btn {
+    background-color: #6378c2;
+    color: white;
+    padding: 6px 30px;
+}
+
+#suggestionWindow .suggestion-table-head div {
+    background-color: white;
+    color: #6378c2;
+}
+
+#suggestionWindow .suggestion-table-col > div {
+    background-color: white;
+    color: #838691;
+    margin: 0;
+    padding: 0;
+}
+
+.suggestion-table-footer a {
+font-size: 14px;
+text-decoration: underline;
+font-style:italic;
+color: #6378c2;
+}
+
+
+

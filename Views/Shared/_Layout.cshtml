@@ -8,15 +8,14 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"></script>
+    <script src="https://kit.fontawesome.com/26d4a64054.js" crossorigin="anonymous"></script>
     <script src="~/js/GlobalFunctions.js"></script>
-    <script>
-        $(document).ajaxError(function (event, jqxhr) {
+    <script>$(document).ajaxError(function (event, jqxhr) {
             if (jqxhr.status == 401) {
                 alert("Internal Server Error");
             }
-        });
-    </script>
-   
+        });</script>
+
 </environment>
 <environment names="Staging,Production">
     <script src="~/lib/jquery/dist/jquery.min.js"></script>

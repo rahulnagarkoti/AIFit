@@ -5,11 +5,13 @@
     <UserSecretsId>aspnet-NutritionRecommender-13E2C05E-F7EB-4F06-AAA7-752D1F140FCC</UserSecretsId>
   </PropertyGroup>
 
+  <PropertyGroup Condition=" '$(RunConfiguration)' == 'NutritionRecommender' " />
   <ItemGroup>
     <Compile Remove="Areas\**" />
     <Content Remove="Areas\**" />
     <EmbeddedResource Remove="Areas\**" />
     <None Remove="Areas\**" />
+    <Content Remove="wwwroot\images\background\wall.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -31,5 +33,8 @@
 
   <ItemGroup>
     <None Remove="Microsoft.CodeAnalysis.VersionCheckAnalyzer" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="wwwroot\images\background\wall.png" />
   </ItemGroup>
 </Project>
