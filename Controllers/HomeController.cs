@@ -1,7 +1,9 @@
 ﻿using AIFit.Controllers;
+using AIFit.Data.ViewModels;
 using AIFit.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using NutritionRecommender.Data;
 using NutritionRecommender.Models;
@@ -142,6 +144,24 @@ namespace NutritionRecommender.Controllers
             {
                 return PartialView("Login");
             }
+            
+            ViewBag.Suggestions = null;
+            var recommendation = _context.Recommendations.Where(x => x.CustomerId == userId).OrderByDescending(x => x.Date).Include(x=>x.Customer).FirstOrDefault();
+
+            if (recommendation != null) 
+            {
+                var exerciseList = _context.WorkoutExercise.Where(x => x.WorkoutId == recommendation.WorkoutId).Include(x => x.Exercise)
+                                      .Select(x => new SuggestionViewModel
+                                      {
+                                          WorkoutId = x.WorkoutId,
+                                          ExerciseName = x.Exercise.ExerciseName,
+                                          TotalBurn = x.Exercise.EnergyBurnt,
+                                          TotalTime = x.Exercise.Duration
+                                      }).ToList();
+
+                ViewBag.Suggestions = exerciseList;
+            }
+
             return PartialView();
 
             //return View(); //comment before commit

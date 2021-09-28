@@ -1,6 +1,9 @@
 ﻿
 @{
     ViewData["Title"] = "Home Page";
+    float totalDuration = 0;
+    float totalCalories = 0;
+    int workoutId = 0;
 }
 
 <div class="panel panel-default homepage-panel mt-5">
@@ -41,25 +44,57 @@
                         <div class="col fw-bold p-2 d-flex justify-content-center rounded mx-2">Duration</div>
                         <div class="col fw-bold p-2 d-flex justify-content-center rounded">Burn</div>
                     </div>
-                    <div id="updateWindow" class="row suggestion-table-body rounded">
-                        <div class="col">
-                            <div class="row suggestion-table-col px-3">
-                                <div class="col p-2 d-flex justify-content-center">Run</div>
-                                <div class="col p-2 d-flex justify-content-center">60mn</div>
-                                <div class="col p-2 d-flex justify-content-center">1000</div>
-                            </div>
-                            <div class="row suggestion-table-col px-3">
-                                <div class="col p-2 d-flex justify-content-center">Run</div>
-                                <div class="col p-2 d-flex justify-content-center">60mn</div>
-                                <div class="col p-2 d-flex justify-content-center">1000</div>
-                            </div>
-                            <div class="row suggestion-table-col px-3">
-                                <div class="col p-2 d-flex justify-content-center">Run</div>
-                                <div class="col p-2 d-flex justify-content-center">60mn</div>
-                                <div class="col p-2 d-flex justify-content-center">1000</div>
+                    @if (ViewBag.Suggestions == null)
+                    {
+                        <div id="updateWindow" class="row suggestion-table-body rounded">
+                            <div class="col">
+                                <div class="row suggestion-table-col px-3">
+                                    <div class="col p-2 d-flex justify-content-center">Run</div>
+                                    <div class="col p-2 d-flex justify-content-center">60mn</div>
+                                    <div class="col p-2 d-flex justify-content-center">1000</div>
+                                </div>
+                                <div class="row suggestion-table-col px-3">
+                                    <div class="col p-2 d-flex justify-content-center">Run</div>
+                                    <div class="col p-2 d-flex justify-content-center">60mn</div>
+                                    <div class="col p-2 d-flex justify-content-center">1000</div>
+                                </div>
+                                <div class="row suggestion-table-col px-3">
+                                    <div class="col p-2 d-flex justify-content-center">Run</div>
+                                    <div class="col p-2 d-flex justify-content-center">60mn</div>
+                                    <div class="col p-2 d-flex justify-content-center">1000</div>
+                                </div>
                             </div>
                         </div>
-                    </div>
+
+                    }
+                    else
+                    {
+                        <div id="updateWindow" class="row suggestion-table-body rounded">
+                            <div class="col">
+                                @foreach (var item in ViewBag.Suggestions)
+                                {
+                                    workoutId = item.WorkoutId;
+                                    totalDuration += item.TotalTime;
+                                    totalCalories += item.TotalBurn;
+                                    <div class="row suggestion-table-col px-3">
+                                        <div class="col p-2 d-flex justify-content-center">@item.ExerciseName</div>
+                                        <div class="col p-2 d-flex justify-content-center">@item.TotalTime</div>
+                                        <div class="col p-2 d-flex justify-content-center">@item.TotalBurn</div>
+                                    </div>
+                                }
+                                <div class="row suggestion-table-col px-3">
+
+                                    <div class="col p-2 d-flex justify-content-center"><b>Total</b></div>
+                                    <div class="col p-2 d-flex justify-content-center"><b>@totalDuration minutes</b></div>
+                                    <div class="col p-2 d-flex justify-content-center"><b>@totalCalories calories</b></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <input type="hidden" id="workoutId" value="@workoutId" class="hidden" />
+
+
+                    }
                     <div class="row suggestion-table-footer p-2">
                         <div class="col d-flex justify-content-between align-items-center"><a href="#" id="alternativeSuggestion">See Other Workout</a><button id="saveSuggestions" class="btn fw-bold">Accept</button></div>
                     </div>
@@ -108,5 +143,23 @@
                 }
             });
 
+        });
+
+        $("#alternativeSuggestion").on("click", function () {
+            workoutId = $("#workoutId").val();
+            if (workoutId != 0  && workoutId != "0" && workoutId != "")
+            {
+                $.ajax(
+                    {
+                        url: "/Suggestion/GetAlternativeSuggestions",
+                        method: "POST",
+                        data: { workoutId: workoutId },
+                        success: function (res) {
+                            $("#main-body").html(res);
+                        }
+                    })
+
+
+            }
         });
     });</script>

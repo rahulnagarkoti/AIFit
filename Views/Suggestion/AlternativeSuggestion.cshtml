@@ -12,6 +12,7 @@
 </style>
 
 <div class="panel panel-default">
+    <a href="#" id="backtoHomepage"><<< Back</a>
     <div class="panel-body window">
         <div class="row">
             <div class="col-md-4">
@@ -48,22 +49,36 @@
         </div>
     </div>
 </div>
-        <script>
-            $(function () {
-                $("#alternativeSuggestion").on("click", function () {
-                    //validaitons
-                    $.ajax(
-                        {
-                            url: "/Suggestion/GetSuggestions",
-                            type: "GET",
-                            success: function (response) {
-                                debugger;
-                                //populate the data in the table
-                                $("#suggestionWindow").html(response);
+<script>
+    $(function () {
+        $("#alternativeSuggestion").on("click", function () {
+            //validaitons
+            $.ajax(
+                {
+                    url: "/Suggestion/GetSuggestions",
+                    type: "GET",
+                    success: function (response) {
+                        debugger;
+                        //populate the data in the table
+                        $("#suggestionWindow").html(response);
 
-                            }
-                        });
-
+                    }
                 });
-            });
-        </script>
+
+        });
+
+        $("#backtoHomepage").on("click", function () {
+            $.ajax(
+                {
+                    url: "/Home/HomePage",
+                    type: "GET",
+                    success: function (response) {
+                        debugger;
+                        //populate the data in the table
+                        $("#main-body").html(response);
+
+                    }
+                });
+        })
+    });
+</script>
