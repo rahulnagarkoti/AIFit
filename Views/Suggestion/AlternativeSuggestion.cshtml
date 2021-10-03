@@ -1,50 +1,114 @@
 ﻿@{
     ViewData["Title"] = "Alternative Suggestion";
+    int workoutId1 = 0;
+    int workoutId2 = 0;
+    int workoutId3 = 0;
+    float totalDuration1 = 0;
+    float totalCalories1 = 0;
+    float totalDuration2 = 0;
+    float totalCalories2 = 0;
+    float totalDuration3 = 0;
+    float totalCalories3 = 0;
 }
 <style>
-    .smallCard {
-        max-height: 100%;
-        max-width: 100%;
-        padding: 20px;
-        margin: 20px;
-        background-color: lightblue;
+    .other-workout-card:not(:first-of-type) {
+        margin-left: 20px;
+    }
+    .other-workout-card {
+        width: 400px;
+    }
+
+    .list-group-item {
+        width: 350px;
+    }
+
+        .list-group-item span {
+            width: 100px;
+        }
+
+    .btn {
+        width: 150px;
+        background-color: #6378c2;
+    }
+
+    .back-btn {
+        width: 90px;
+        background-color: #fff;
     }
 </style>
 
-<div class="panel panel-default">
-    <a href="#" id="backtoHomepage"><<< Back</a>
-    <div class="panel-body window">
-        <div class="row">
-            <div class="col-md-4">
-                <div class="card smallCard">
-                    <div class="card-header"> Workout 1</div>
-                    <div class="card-body">
-                        <h5 class="card-title">Special title treatment</h5>
-                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                        <a href="#" class="btn btn-primary">Choose</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card smallCard">
-                    <div class="card-header"> Workout 2</div>
-                    <div class="card-body">
-                        <h5 class="card-title">Special title treatment</h5>
-                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                        <a href="#" class="btn btn-primary">Choose</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card smallCard">
-                    <div class="card-header"> Workout 3</div>
-                    <div class="card-body">
-                        <h5 class="card-title">Special title treatment</h5>
-                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                        <a href="#" class="btn btn-primary">Choose</a>
-                    </div>
-                </div>
-            </div>
+<a href="#" id="backtoHomepage" class="btn back-btn d-flex align-items-center justify-content-between mb-5"><i class="fas fa-arrow-left"></i>Back</a>
+<div class="card d-flex p-4 py-4">
+    <div class="row">
+        <div class="col-md-4">
+            <h1 class="card-title h3">Workout 1</h1>
+            <ul class="list-group my-4">
+                @foreach (var item in ViewBag.Workout1)
+                {
+                    <li class="list-group-item d-flex justify-content-between">
+                        <span class="exercise-name">@item.ExerciseName</span>
+                        <span class="exercise-duration">@item.TotalTime minutes</span>
+                        <span class="exercise-burn">@item.TotalBurn calories</span>
+                    </li>
+                    totalDuration1 +=  item.TotalTime;
+                    totalCalories1 +=  item.TotalBurn;
+                    workoutId1 = item.WorkoutId;
+                }
+                <li class="list-group-item d-flex justify-content-between">
+                    <span><b>Total</b></span>
+                    <span><b>@totalDuration1 mins</b></span>
+                    <span><b>@totalCalories1 cal</b></span>
+                </li>
+
+            </ul>
+            <button href="#" class="btn btn-primary select" workoutId="@workoutId1">Select</button>
+
+        </div>
+
+        <div class="col-md-4">
+            <h1 class="card-title h3">Workout 2</h1>
+            <ul class="list-group my-4">
+                @foreach (var item in ViewBag.Workout2)
+                {
+                    <li class="list-group-item d-flex justify-content-between">
+                        <span class="exercise-name">@item.ExerciseName</span>
+                        <span class="exercise-duration">@item.TotalTime mins</span>
+                        <span class="exercise-burn">@item.TotalBurn cal</span>
+                    </li>
+                    totalDuration2 += item.TotalTime;
+                    totalCalories2 += item.TotalBurn;
+                    workoutId2 = item.WorkoutId;
+}
+                <li class="list-group-item d-flex justify-content-between">
+                    <span><b>Total</b></span>
+                    <span><b>@totalDuration2 mins</b></span>
+                    <span><b>@totalCalories2 cal</b></span>
+                </li>
+            </ul>
+            <button href="#" workoutId="@workoutId2" class="btn btn-primary select">Select</button>
+        </div>
+
+        <div class="col-md-4">
+            <h1 class="card-title h3">Workout 3</h1>
+            <ul class="list-group my-4">
+                @foreach (var item in ViewBag.Workout3)
+                {
+                    <li class="list-group-item d-flex justify-content-between">
+                        <span class="exercise-name">@item.ExerciseName</span>
+                        <span class="exercise-duration">@item.TotalTime mins</span>
+                        <span class="exercise-burn">@item.TotalBurn cal</span>
+                    </li>
+                    totalDuration3 += item.TotalTime;
+                    totalCalories3 += item.TotalBurn;
+                    workoutId3 = item.WorkoutId;
+                }
+                <li class="list-group-item d-flex justify-content-between">
+                    <span><b>Total</b></span>
+                    <span><b>@totalDuration3 mins</b></span>
+                    <span><b>@totalCalories3 cal</b></span>
+                </li>
+            </ul>
+            <button href="#" workoutId="@workoutId3" class="btn btn-primary select">Select</button>
 
         </div>
     </div>
@@ -79,6 +143,33 @@
 
                     }
                 });
-        })
+        });
+
+        $(".select").on("click", function () {
+            debugger;
+            var workoutId = $(this).attr('workoutId');
+            $.ajax(
+                {
+                    url: "/Suggestion/saveSuggestion",
+                    method: "POST",
+                    data: { workoutId: workoutId },
+                    success: function (res) {
+                        alert("Enjoy Working Out!");
+                        //back to homepage
+                        $.ajax(
+                            {
+                                url: "/Home/HomePage",
+                                type: "GET",
+                                success: function (response) {
+                                    debugger;
+                                    //populate the data in the table
+                                    $("#main-body").html(response);
+
+                                }
+                            });
+                        //$("#main-body").html(res);
+                    }
+                })
+        });
     });
 </script>

@@ -98,14 +98,50 @@ namespace AIFit.Controllers
         {
             try
             {
-                var exercises = new List<SuggestionViewModel>()
-            {
-                new SuggestionViewModel{ ExerciseName = "Squats", TotalBurn=100, TotalTime=10 },
-                new SuggestionViewModel{ ExerciseName = "Pushups", TotalBurn=375, TotalTime=1 },
-                new SuggestionViewModel{ ExerciseName = "Jumping", TotalBurn=300, TotalTime=15 },
-                new SuggestionViewModel{ ExerciseName = "Sprinting", TotalBurn=600, TotalTime=2 }
-            };
-                ViewBag.Exercises = exercises;
+                Random rand = new Random();
+                int count = _context.Workout.Count();
+                int toSkip = rand.Next(1, count);
+                var workout = _context.Workout.Skip(toSkip).Take(1).FirstOrDefault();
+                int workoutId1 = workout.Id;
+
+
+
+                var exerciseList1 = _context.WorkoutExercise.Where(x => x.WorkoutId == workout.Id).Include(x => x.Exercise)
+                                                       .Select(x => new SuggestionViewModel
+                                                       {
+                                                           WorkoutId = x.WorkoutId,
+                                                           ExerciseName = x.Exercise.ExerciseName,
+                                                           TotalBurn = x.Exercise.EnergyBurnt,
+                                                           TotalTime = x.Exercise.Duration
+                                                       }).ToList();
+
+                workout = _context.Workout.Where(x=>x.Id != workoutId1).Take(1).FirstOrDefault();
+                int workoutId2 = workout.Id;
+
+                var exerciseList2 = _context.WorkoutExercise.Where(x => x.WorkoutId == workout.Id).Include(x => x.Exercise)
+                                         .Select(x => new SuggestionViewModel
+                                         {
+                                             WorkoutId = x.WorkoutId,
+                                             ExerciseName = x.Exercise.ExerciseName,
+                                             TotalBurn = x.Exercise.EnergyBurnt,
+                                             TotalTime = x.Exercise.Duration
+                                         }).ToList();
+
+
+
+                workout = _context.Workout.Where(x=>x.Id !=workoutId1 && x.Id != workoutId2 ).Take(1).FirstOrDefault();
+                var exerciseList3 = _context.WorkoutExercise.Where(x => x.WorkoutId == workout.Id).Include(x => x.Exercise)
+                         .Select(x => new SuggestionViewModel
+                         {
+                             WorkoutId = x.WorkoutId,
+                             ExerciseName = x.Exercise.ExerciseName,
+                             TotalBurn = x.Exercise.EnergyBurnt,
+                             TotalTime = x.Exercise.Duration
+                         }).ToList();
+
+                ViewBag.Workout1 = exerciseList1;
+                ViewBag.Workout2 = exerciseList2;
+                ViewBag.Workout3 = exerciseList3;
                 return PartialView("AlternativeSuggestion");
             }
             catch (Exception e)
