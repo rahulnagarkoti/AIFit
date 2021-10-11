@@ -134,6 +134,48 @@ namespace NutritionRecommender.Controllers
             }
            
         }
+
+
+        [HttpPost]
+        public Result ForgotPassword(string email, string password)
+        {
+            var result = new Result();
+            try
+            {
+                var user = _context.Customer.Where(x => x.Email == email).FirstOrDefault();
+                if (user == null)
+                {
+                    //user does not exist
+                    result.IsError = true;
+                    result.ErrorMessage = "The user does not exist!";
+                    return result;
+                }
+                //validate email
+                if (!_helper.ValidateEmail(email))
+                {
+                    result.IsError = true;
+                    result.ErrorMessage = "Email is invalid!";
+                    return result;
+                }
+
+                //hash password
+                var hashPwd = Crypto.HashPassword(password);
+                user.Password = hashPwd;
+                _context.Customer.Add(user);
+                _context.SaveChanges();
+                HttpContext.Session.SetString("userId", user.Id.ToString());
+                result.IsError = false;
+                return result;
+            }
+            catch (Exception e)
+            {
+                //log the error in DB or text file
+                result.IsError = false;
+                result.ErrorMessage = "Internal Server Error!";
+                return result;
+            }
+
+        }
         public IActionResult HomePage()
         {
             var userId = GetCurrentUserId();

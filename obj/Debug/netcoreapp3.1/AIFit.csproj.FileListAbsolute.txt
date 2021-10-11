@@ -1265,3 +1265,4 @@ C:\Users\nagar\source\repos\AIFit\obj\Debug\netcoreapp3.1\AIFit.dll
 C:\Users\nagar\source\repos\AIFit\obj\Debug\netcoreapp3.1\AIFit.pdb
 C:\Users\nagar\source\repos\AIFit\obj\Debug\netcoreapp3.1\AIFit.genruntimeconfig.cache
 C:\Users\nagar\source\repos\AIFit\obj\Debug\netcoreapp3.1\AIFit.csproj.AssemblyReference.cache
+C:\Users\nagar\source\repos\AIFit\obj\Debug\netcoreapp3.1\Razor\Views\Home\ForgotPassword.cshtml.g.cs
