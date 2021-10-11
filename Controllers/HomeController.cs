@@ -34,7 +34,7 @@ namespace NutritionRecommender.Controllers
         {
             return View();
         }
-        public IActionResult Login() 
+        public IActionResult Login()
         {
             //check if user is logged in -> if yes, direct to Home Page
             var userId = GetCurrentUserId();
@@ -44,6 +44,11 @@ namespace NutritionRecommender.Controllers
                 return HomePage();
             }
 
+            return PartialView();
+        }
+
+        public IActionResult ForgotPassword()
+        {
             return PartialView();
         }
 
@@ -161,7 +166,7 @@ namespace NutritionRecommender.Controllers
                 //hash password
                 var hashPwd = Crypto.HashPassword(password);
                 user.Password = hashPwd;
-                _context.Customer.Add(user);
+                _context.Customer.Update(user);
                 _context.SaveChanges();
                 HttpContext.Session.SetString("userId", user.Id.ToString());
                 result.IsError = false;
