@@ -12,6 +12,7 @@ using Microsoft.Extensions.Hosting;
 using NutritionRecommender.Data;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -31,7 +32,7 @@ namespace NutritionRecommender
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            string dbUrl ="Data Source =" + _env.WebRootPath +"\\"+ Configuration.GetConnectionString("DefaultConnection");
+            string dbUrl =  "Data Source =" + Path.Combine(_env.WebRootPath, Configuration.GetConnectionString("DefaultConnection"));
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlite(dbUrl));
 

@@ -1,0 +1,326 @@
+﻿.bg-image {
+    position: relative;
+    overflow: hidden;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 60% 100%;
+}
+
+.window {
+    border-radius: 20px;
+}
+
+.panel-body {
+/*    background-color: gray;*/
+    height: 100%;
+    width: 75%;
+}
+
+.suggestionWindow {
+    background-color: white;
+    margin: 4px 4px 4px 4px;
+    height: 95%
+}
+
+.customCard {
+    min-height: 75vh;
+    width: 35vw;
+    position: fixed;
+    left: 10%;
+    top: 10%;
+    max-height: 80vh;
+    background-color: transparent;
+    border: transparent;
+}
+
+    .card-header{
+        background-color: transparent;
+        border: transparent;
+    }
+
+
+    .card-body{
+        overflow: auto;
+    }
+
+.login_image {
+    background: url(../images/background/Yoga.jpg);
+    background-position: center;
+    background-size: cover;
+}
+
+.image-div {
+    width: 100%;
+    height: auto;
+}
+
+input {
+    border-radius: 15px;
+}
+
+
+
+.nav-item {
+    width: 50%;
+    text-align: center;
+}
+
+.d-block {
+    display: block;
+}
+
+
+.login-window {
+    width: 100%;
+}
+
+.bt-radius {
+    border-top-right-radius: 5px !important
+}
+
+.btn-blue {
+    color: #fff;
+    border-color: #6379c2;
+    background-color: #6379c2;
+}
+
+    .btn-blue:hover {
+        color: #fff;
+        background-color: #6379c2;
+        border-color: #6379c2
+    }
+
+.btn-block {
+    /*margin-left:25%;*/
+    /*width: 50%;*/
+    display: block;
+}
+
+.nav-pills {
+    display: table !important;
+    width: 100%
+}
+
+    .nav-pills .nav-link {
+        border-radius: 5px;
+        background-color: white;
+        color: #6379c2;
+    }
+
+    .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+        background-color: #6379c2;
+        color: white;
+    }
+
+
+.nav-item {
+    display: table-cell;
+/*    background: #0d6efd2e*/
+}
+
+
+.form input {
+    margin-bottom: 12px;
+    border-radius: 3px;
+    background-color: #c4c4c4;
+    color: #ffffff;
+}
+
+    .form input:focus{
+        background-color: #838691;
+        color: #ffffff;
+        }
+
+    .form input::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+        color: white;
+        opacity: 1; /* Firefox */
+    }
+
+    :-ms-input-placeholder { /* Internet Explorer 10-11 */
+        color: white;
+    }
+
+    ::-ms-input-placeholder { /* Microsoft Edge */
+        color: white;
+    }
+
+.error {
+    color: red;
+}
+
+.errorMessage {
+    padding: 4px;
+}
+
+.logo {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    border-radius: 50%;
+    width: 100px;
+}
+
+a{
+    text-decoration:none
+
+}
+.nav-image {
+    height: auto;
+    width: auto;
+    max-height: 40px;
+    max-width: 240px;
+    border-radius: 50%
+}
+.tab-content {
+    background-color: white;
+    border-radius: 5px;
+}
+
+/* radio button - restyle */
+
+input[type="radio"] {
+-webkit-appearance: none;
+appearance: none;
+
+position: relative;
+top: 5px;
+width: 20px;
+height: 20px;
+background-color: #c4c4c4;
+border-radius: 10px;
+margin-right: 10px;
+}
+
+input[type="radio"]::before {
+content: "";
+position: absolute;
+top: 5px;
+left: 5px;
+width: 10px;
+height: 10px;
+border-radius: 5px;
+background-color: #fff;
+display: none;
+}
+
+input[type="radio"]:checked::before {
+display: block;
+}
+
+.radio-inline {
+display: flex;
+align-items: center;
+}
+
+/* homepage */
+
+.homepage-panel-body {
+/*    background-color: lightgray;*/
+    width: 100%;
+}
+
+
+/* homepage - left */
+
+.form-col {
+background-color: white;
+max-height: 280px;
+}
+
+.homepage-form label {
+margin-bottom: 0;
+}
+
+.form-group-submit .btn {
+    background-color: #6378c2;
+    color: white;
+    padding: 6px 30px;
+}
+
+/*.homepage-form .form-group {
+border: 1px solid red;
+}*/
+
+.homepage-input, .homepage-select {
+    width: 230px;
+    padding: 5px 20px;
+    border-radius: 0;
+    background-color: #c4c4c4;
+    color: white;
+    border: 0;
+    transition: background-color 0.3s ease;
+}
+
+    .homepage-input::placeholder {
+        color: white;
+    }
+
+.homepage-select {
+    position: relative;
+    padding-left: 15px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+.form-group-select {
+position: relative;
+}
+
+    .form-group-select i {
+        position: absolute;
+        top: 10px;
+        right: 20px;
+        color: white;
+        pointer-events: none;
+    }
+
+    .homepage-input:focus, .homepage-select:focus, .homepage-input:valid, .homepage-select:valid {
+        background-color: #838691;
+    }
+
+/* homepage - mid */
+
+.space-col {
+background-color: transparent;
+
+}
+
+/* homepage - right */
+
+.suggestion-col h1 {
+color: white;
+margin: 0;
+}
+
+#suggestionWindow div {
+    color: white;
+}
+
+#suggestionWindow .btn {
+    background-color: #6378c2;
+    color: white;
+    padding: 6px 30px;
+}
+
+#suggestionWindow .suggestion-table-head div {
+    background-color: white;
+    color: #6378c2;
+}
+
+#suggestionWindow .suggestion-table-col > div {
+    background-color: white;
+    color: #838691;
+    margin: 0;
+    padding: 0;
+}
+
+.suggestion-table-footer a {
+font-size: 14px;
+text-decoration: underline;
+font-style:italic;
+color: #6378c2;
+}
+
+
+
